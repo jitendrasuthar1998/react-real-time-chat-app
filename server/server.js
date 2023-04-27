@@ -15,6 +15,10 @@ const io = new Server(server, {
     }
 })
 
+io.on("connection", (socket)=> {
+    console.log('server socket id == ', socket.id);
+})
+
 app.get('/', (req, res)=> {
     res.send("Chat app is about to start.");
 })

@@ -2,9 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import Moment from 'react-moment'
+import {io} from 'socket.io-client';
+
 
 const ChatRoom = (props) => {
 
+  useEffect(()=> {
+    const socket = io("http://localhost:8000/");
+    socket.on('connect', ()=> {
+      console.log('client socket id == ', socket.id)
+    })
+  },[])
 
   console.log('props is at ChatRoom')
   const location = useLocation();
